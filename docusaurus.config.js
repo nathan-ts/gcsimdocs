@@ -8,13 +8,14 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const config = {
   title: "gcsim Docs",
   tagline: "gcsim - simulation impact",
-  url: "https://your-docusaurus-test-site.com",
+  url: "https://docs.gcsim.app",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "facebook", // Usually your GitHub org/user name.
   projectName: "docusaurus", // Usually your repo name.
+  staticDirectories: ['static'],
 
   presets: [
     [
@@ -26,7 +27,7 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/genshinsim/gcsimdocs",
         },
         blog: false,
         theme: {
