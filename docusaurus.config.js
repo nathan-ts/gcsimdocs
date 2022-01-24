@@ -16,6 +16,13 @@ const config = {
   organizationName: "facebook", // Usually your GitHub org/user name.
   projectName: "docusaurus", // Usually your repo name.
   staticDirectories: ['static'],
+  scripts: [
+    {
+      src: "https://static.cloudflareinsights.com/beacon.min.js",
+      defer: true,
+      "data-cf-beacon": '{"token": "2f8a17efd29b479f9dc27e09aae7ccb5"}'
+    },
+  ],
 
   presets: [
     [
