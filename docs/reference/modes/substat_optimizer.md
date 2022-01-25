@@ -40,12 +40,12 @@ Below is a short Windows batch script. Copy the text into a file called `run_opt
 ```
 set argument="%2"
 
-set filename=%1
+set filename=%~1
 set output=%filename:txt=json%
 
-"gcsim-x86_64-pc-windows-msvc.exe.lnk" -c="%cd%/config/%1" -substatOptim=true -out="%cd%/optimized_config/%1" %argument% || exit /b %errorlevel%
+"gcsim-x86_64-pc-windows-msvc.exe.lnk" -c="%cd%/config/%filename%" -substatOptim=true -out="%cd%/optimized_config/%filename%" %argument% || exit /b %errorlevel%
 
-"gcsim-x86_64-pc-windows-msvc.exe.lnk" -c="%cd%/optimized_config/%1" -out="%cd%/viewer_gz/%output%" -gz="true" %argument%
+"gcsim-x86_64-pc-windows-msvc.exe.lnk" -c="%cd%/optimized_config/%filename%" -out="%cd%/viewer_gz/%output%" -gz="true" -dh="false" %argument%
 ```
 
 Next, navigate to your gcsim installation location, and create a shortcut of the `gcsim-x86_64-pc-windows-msvc.exe` file. Move it to the folder with the batch file that you created earlier, and rename it to `gcsim-x86_64-pc-windows-msvc.exe`.
