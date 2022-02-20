@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+title: Action Lists
+---
+
 Action lists are purely priority lists (modelled after WoW [simulationcraft](https://github.com/simulationcraft/simc), but differing syntax). The sim will scan down the list of actions starting with the first one and continuing until the first available is found. This is the action that will be executed. If nothing is found, nothing will be executed this frame and the list will be checked again the next, and so on.
 
 Below is an example - the rest of the page dives into the syntax details, but a practical guide on how to build an action list starting from scratch can be found [here](../../guide/practical_guide.md). In particular see the "Simming New Teams (Creating/Modifying Action Lists)" section.
