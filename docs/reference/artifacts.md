@@ -9,6 +9,6 @@ Currently available artifact sets can be found in the web interface. There are s
 noelle add set="huskofopulentdreams" count=4 +params=[stacks=4];
 ```
 
-| weapon                 | parameter | description                        |
+| artifact               | parameter | description                        |
 |------------------------|-----------|------------------------------------|
 | husk of opulent dreams | stacks    | Initial 4-piece set passive stacks |
