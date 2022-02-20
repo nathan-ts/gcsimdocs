@@ -15,7 +15,7 @@ Note that by default the substat optimizer will assign substats that adhere to t
 
 ## Usage
 
-Due to a broader UI rework, the substat optimizer module is not currently built into the UI, and must be operated from the command line. Below we provide a brief guide on basic usage.
+Due to difficulties in porting this into the website and performance reasons, the substat optimizer must be operated from the command line. Below we provide a brief guide on basic usage.
 
 Before using the optimizer, you will first need to setup your team in the UI. You will need to set up all elements for a team, so you will need:
 1. A team of characters, which each have listed:
@@ -28,10 +28,14 @@ Before using the optimizer, you will first need to setup your team in the UI. Yo
    - An example that we have seen in practice is that the optimizer may sometimes return that 0 ER substats is the "most optimal" if you can't burst off of cooldown.
 4. As with most other things when using the sim, do not blindly trust the results and make sure to look at the summary stats and debug to make sure that the team is performing as you would expect.
 
+Once you have this all set up, then you will want to copy out your full action list, and save it into a file.
 
-Once you have this all set up, then you will want to go to the "Sim" tab, and under "Sim Options", click on the "Export Full Config" button at the bottom, and save the file out.
-
-![](sim_options.PNG)
+Next, you will need to download the latest desktop version of the sim. In the future we will have one click downloads, but for now you will need to compile from source. You can follow the below instructions to do that:
+- Download and install go, found [here](https://go.dev/).
+- Clone the gcsim repo or download it to a folder on your computer, which you can do through [this link](https://github.com/genshinsim/gcsim/archive/refs/heads/main.zip).
+- Navigate to `./main/cmd/gcsim` on your computer, where `.` is the location that you unzipped the code.
+- Open up a command line in this folder, and then run `go build`.
+- You should see a new "gcsim.exe" file appear in the same directory, which you can then run and use for the below.
 
 ### TL;DR Just Give Me Something That Works
 
@@ -43,12 +47,12 @@ set argument="%2"
 set filename=%~1
 set output=%filename:txt=json%
 
-"gcsim-x86_64-pc-windows-msvc.exe.lnk" -c="%cd%/config/%filename%" -substatOptim=true -out="%cd%/optimized_config/%filename%" %argument% || exit /b %errorlevel%
+"gcsim.exe.lnk" -c="%cd%/config/%filename%" -substatOptim=true -out="%cd%/optimized_config/%filename%" %argument% || exit /b %errorlevel%
 
-"gcsim-x86_64-pc-windows-msvc.exe.lnk" -c="%cd%/optimized_config/%filename%" -out="%cd%/viewer_gz/%output%" -gz="true" -dh="false" %argument%
+"gcsim.exe.lnk" -c="%cd%/optimized_config/%filename%" -out="%cd%/viewer_gz/%output%" -gz="true" %argument%
 ```
 
-Next, navigate to your gcsim installation location, and create a shortcut of the `gcsim-x86_64-pc-windows-msvc.exe` file. Move it to the folder with the batch file that you created earlier, and rename it to `gcsim-x86_64-pc-windows-msvc.exe`.
+Next, navigate to your gcsim executable location, and create a shortcut of the `gcsim.exe` file. Move it to the folder with the batch file that you created earlier, and rename it to `gcsim.exe`.
 
 ![](gcsim_shortcut.PNG)
 
@@ -68,7 +72,7 @@ Example:
 .\run_optimizer_full.bat "raiden_hyper.txt" "-calc"
 ```
 
-This will output a configuration with optimized substats into the "optimized_config" folder, and a viewer_gz file using the optimized substats in the "viewer_gz" folder, which you can upload to the [online viewer](https://viewer.gcsim.app/). If you want some details about what the optimizer is doing, you can scroll back in the cmd log, where you should see something like this output:
+This will output a configuration with optimized substats into the "optimized_config" folder, and a viewer_gz file using the optimized substats in the "viewer_gz" folder, which you can upload to the [online viewer](https://gcsim.app/viewer). If you want some details about what the optimizer is doing, you can scroll back in the cmd log, where you should see something like this output:
 
 ```
 PS C:\HOME\Misc Programs\gsim\test_optim> .\run_substat_optimizer_full.bat "hu_tao_geo.txt"
