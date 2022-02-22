@@ -30,12 +30,7 @@ Before using the optimizer, you will first need to setup your team in the UI. Yo
 
 Once you have this all set up, then you will want to copy out your full action list, and save it into a file.
 
-Next, you will need to download the latest desktop version of the sim. In the future we will have one click downloads, but for now you will need to compile from source. You can follow the below instructions to do that:
-- Download and install go, found [here](https://go.dev/).
-- Clone the gcsim repo or download it to a folder on your computer, which you can do through [this link](https://github.com/genshinsim/gcsim/archive/refs/heads/main.zip).
-- Navigate to `./main/cmd/gcsim` on your computer, where `.` is the location that you unzipped the code.
-- Open up a command line in this folder, and then run `go build`.
-- You should see a new "gcsim.exe" file appear in the same directory, which you can then run and use for the below.
+Next, you will need to download the latest desktop version of the sim, which you can find [here](https://github.com/genshinsim/gcsim/releases).
 
 ### TL;DR Just Give Me Something That Works
 
@@ -47,29 +42,27 @@ set argument="%2"
 set filename=%~1
 set output=%filename:txt=json%
 
-"gcsim.exe.lnk" -c="%cd%/config/%filename%" -substatOptim=true -out="%cd%/optimized_config/%filename%" %argument% || exit /b %errorlevel%
+"gcsim.exe" -c="%cd%/config/%filename%" -substatOptim=true -out="%cd%/optimized_config/%filename%" %argument% || exit /b %errorlevel%
 
-"gcsim.exe.lnk" -c="%cd%/optimized_config/%filename%" -out="%cd%/viewer_gz/%output%" -gz="true" %argument%
+"gcsim.exe" -c="%cd%/optimized_config/%filename%" -out="%cd%/viewer_gz/%output%" -gz="true" %argument%
 ```
 
-Next, navigate to your gcsim executable location, and create a shortcut of the `gcsim.exe` file. Move it to the folder with the batch file that you created earlier, and rename it to `gcsim.exe`.
+Next, place the `gcsim.exe` file that you downloaded from the release page in the same folder with the batch file that you created earlier.
 
-![](gcsim_shortcut.PNG)
-
-Next create three subfolders named "config", "optimized_config", and "viewer_gz", and place the config that you saved into the "config" folder.
+Create three subfolders named "config", "optimized_config", and "viewer_gz", and place the config that you saved into the "config" folder.
 
 Finally, open up a Powershell window at the location, which you can do by holding shift and right clicking in the empty space in the folder. This is what my final folder setup looks like:
 
 ![](gcsim_powershell.PNG)
 
-In the Powershell window, you can run the following command, where `[[ANY OTHER ARGUMENTS]]` is most usually going to only be relevant if you are running a calc mode config, in which case you should replace it with `"-calc"`:
+In the Powershell window, you can run the following command:
 
 ```
-.\run_optimizer_full.bat "[[NAME OF CONFIG]]" "[[ANY OTHER ARGUMENTS]]"
+.\run_optimizer_full.bat "[[NAME OF CONFIG]]"
 ```
 Example:
 ```
-.\run_optimizer_full.bat "raiden_hyper.txt" "-calc"
+.\run_optimizer_full.bat "raiden_hyper.txt"
 ```
 
 This will output a configuration with optimized substats into the "optimized_config" folder, and a viewer_gz file using the optimized substats in the "viewer_gz" folder, which you can upload to the [online viewer](https://gcsim.app/viewer). If you want some details about what the optimizer is doing, you can scroll back in the cmd log, where you should see something like this output:
@@ -113,13 +106,17 @@ The assumption in this section is that you know how to navigate around the comma
 First here are a few key points about the arguments to the optimizer run command (copied below):
 
 ```
-gcsim-x86_64-pc-windows-msvc.exe -c="[[PATH TO SAVED CONFIG HERE]]" -substatOptim=true -out="[[PATH TO DESIRED OUTPUT CONFIG HERE]]" [[ANY OTHER ARGUMENTS HERE]]
+gcsim.exe -c="[[PATH TO SAVED CONFIG HERE]]" -substatOptim=true -out="[[PATH TO DESIRED OUTPUT CONFIG HERE]]" [[ANY OTHER ARGUMENTS HERE]]
 ```
 
 1. The `-out` flag is a convenience measure which outputs a new copy of the configuration file at the specified location without any of the existing substat lines, and has the final optimized substat lines instead.
-2. Some configurations will require additional arguments - you can view a full set of flags with `gcsim-x86_64-pc-windows-msvc.exe -help`, but the most common one that you may need to add is `-calc` if you are using a calc mode configuration.
+2. Some configurations will require additional arguments - you can view a full set of flags with `gcsim.exe -help`, but the most common one that you may need to add is `-calc` if you are using a calc mode configuration.
 
-After you run the above command, the routine will need to run for a while before returning an output. On my somewhat beefy machine it takes around 15-30 seconds depending on the configuration, but note that it will likely use a high amount of CPU over that period. If you want it to run a bit more slowly and use fewer CPU cores, then in the "Sim Options" window in the UI, set the number of workers to a lower number and re-export the file. Alternatively you can change the "workers" number in the `options` line at the top of the config directly.
+After you run the above command, the routine will need to run for a while before returning an output. On my somewhat beefy machine it takes around 15-30 seconds depending on the configuration, but note that it will likely use a high amount of CPU over that period. If you want it to run a bit more slowly and use fewer CPU cores, then you can change the "workers" number in the `options` line at the top of the config directly, like so:
+
+```
+options iteration=500 duration=24 mode=sl workers=4;
+```
 
 ### Additional Options
 
