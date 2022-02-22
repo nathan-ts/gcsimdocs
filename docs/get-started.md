@@ -29,9 +29,4 @@ We're still working on getting those up and running properly.
 
 # Advanced users
 
-For advanced users, the command line tool is still available and can be built directly from source. The command line tool offers performance boost over the web application as it is not subject to limitations in the browser. The git repo is located [here](https://github.com/genshinsim/gcsim). You will need to have go installed. Use the following command to run the tool:
-
-```shell
-cd cmd/gcsim
-go run .
-```
+For advanced users, the desktop command line application is still available, which usually offers around a 3-5x performance boost over the web application as it is not subject to limitations in the browser. You can download the latest releases [here](https://github.com/genshinsim/gcsim/releases) for a one-click .exe file, and see [this page](reference/desktop_application.md) for more information.
