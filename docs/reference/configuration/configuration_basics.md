@@ -80,7 +80,7 @@ An optional param flag may be added to the character, the weapon, or the set via
 However, all characters have an optional flag for setting starting energy. For example:
 
 ```
-bennett char lvl=70/80 cons=2 talent=6,8,8 +params=[energy=20];
+bennett char lvl=70/80 cons=2 talent=6,8,8 +params=[start_energy=20];
 ```
 
 This will set Bennett to start with 20 energy. **Warning**: There is no sanity check on the starting energy. So if you set this to a negative number or a really large number, behaviour is undefined. If this param is not set, then the energy will default to the max energy for the character (i.e. ready to burst).
