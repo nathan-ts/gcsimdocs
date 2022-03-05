@@ -50,6 +50,7 @@ You can specify run options directly in the config file
   - `burst_delay`
   - `dash_delay`
   - `jump_delay`
+  - `aim_delay`
 - Note that by default if `swap_delay` is not set, it will default to 1. All other delays will default to 0
 
 ## Comments
