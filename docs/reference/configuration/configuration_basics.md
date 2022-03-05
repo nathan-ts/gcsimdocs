@@ -39,7 +39,19 @@ xingqiu char
 
 You can specify run options directly in the config file
 
-`options iteration=5000 duration=90 workers=24 mode=sl`
+`options iteration=5000 duration=90 workers=24 mode=sl swap_delay=100 attack_delay=100;`
+
+- `mode` can be [`sl`](/guide/sequential_mode) or [`apl`](/guide/action_priority_mode_guide)
+- You can set various global delays for different actions. Following are valid:
+  - `swap_delay`
+  - `attack_delay`
+  - `charge_delay`
+  - `skill_delay`
+  - `burst_delay`
+  - `dash_delay`
+  - `jump_delay`
+  - `aim_delay`
+- Note that by default if `swap_delay` is not set, it will default to 1. All other delays will default to 0
 
 ## Comments
 
@@ -64,7 +76,15 @@ bennett add stats hp=4780 atk=311 er=0.518 pyro%=0.466 cr=0.311 ; #main
 bennett add stats hp=717 hp%=0.058 atk=121 atk%=0.635 def=102 em=42 er=0.156 cr=0.128 cd=0.265 ; #subs
 ```
 
-An optional param flag may be added to the character, the weapon, or the set via the `+params` flag. This optional param is defined by each character and may include things such as Serpent Spine starting stacks.
+An optional param flag may be added to the character, the weapon, or the set via the `+params` flag. This optional param is defined by each character.
+
+However, all characters have an optional flag for setting starting energy. For example:
+
+```
+bennett char lvl=70/80 cons=2 talent=6,8,8 +params=[start_energy=20];
+```
+
+This will set Bennett to start with 20 energy. **Warning**: There is no sanity check on the starting energy. So if you set this to a negative number or a really large number, behaviour is undefined. If this param is not set, then the energy will default to the max energy for the character (i.e. ready to burst).
 
 With the except of the stats (i.e. `hp`, `atk`, etc...), all other fields not starting with a `+` are mandatory
 
