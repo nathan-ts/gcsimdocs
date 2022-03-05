@@ -15,12 +15,12 @@ const config = {
   favicon: "img/favicon.ico",
   organizationName: "facebook", // Usually your GitHub org/user name.
   projectName: "docusaurus", // Usually your repo name.
-  staticDirectories: ['static'],
+  staticDirectories: ["static"],
   scripts: [
     {
       src: "https://static.cloudflareinsights.com/beacon.min.js",
       defer: true,
-      "data-cf-beacon": '{"token": "2f8a17efd29b479f9dc27e09aae7ccb5"}'
+      "data-cf-beacon": '{"token": "2f8a17efd29b479f9dc27e09aae7ccb5"}',
     },
   ],
 
@@ -33,8 +33,7 @@ const config = {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/genshinsim/gcsimdocs",
+          editUrl: "https://github.com/genshinsim/gcsimdocs/blob/main/",
         },
         blog: false,
         theme: {
