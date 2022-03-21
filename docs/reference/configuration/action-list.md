@@ -221,7 +221,7 @@ Conditions are specified in the following format `.field1.field2.field3<op><val>
 | `status` | see each character | none | none |these are character specialized statuses, usually used to keep track of buffs |
 | `tags` | `any char name` | see each character none || these are character specialized tags as defined by each character|
 | `debuff` | `res` or `def` | `t1` or `t2` etc...| `debuff tag` | specific debuffs, see debuff section below on currently acceptable tags|
-| `element` | `pryo` `hydro` `cryo` `electro` `frozen` `ec` | `t1` or `t2` etc... | `1` if the specified element exists, `0` otherwise|
+| `element` |  `t1` or `t2` etc... | `pryo` `hydro` `cryo` `electro` `frozen` `ec`| none | `1` if the specified element exists, `0` otherwise|
 | `ready`| `any char name` | `skill` `burst`|none | shorthand to check both cooldown and energy is ready |
 
 `<op>` can be any one of the following: `==` `!=` `>` `>=` `<` `<=`
