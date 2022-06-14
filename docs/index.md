@@ -16,7 +16,7 @@ gcsim is a team dps calculation / combat simulation tool for Genshin Impact. In 
 
 **Note that gcsim is still heavily under active development.** We are constantly working refining our knowledge of game mechanics and doing our best to model the game mechanics as accurately as possible. Currently, we believe that the sim is in a useable state for many teams.
 
-That being said, as with any calculations work, you should always make sure to check your results. If you do have any questions or find any issues, please either submit an issue on [Github](https://github.com/genshinsim/gsim) or reach out to us on Discord.
+That being said, as with any calculations work, you should always make sure to check your results. If you do have any questions or find any issues, please either submit an issue on [Github](https://github.com/genshinsim/gsim) or reach out to us on [Discord](https://discord.com/channels/845087716541595668/961358766278869023).
 
 # How does it work
 
